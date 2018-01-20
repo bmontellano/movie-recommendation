@@ -47,33 +47,36 @@ class App extends Component {
         <h2 className='brand-logo center'>Movie Match</h2>
         <h3 className="Right"> 🍭 🍿 </h3>
       </nav>
+
+      <Home tweets={this.state.tweets}
+        handleSearch={this.handleSearch}
+        updateSearchValue={this.updateSearchValue}
+        search={this.state.search} 
+      />
+
       <Row>
           <Col s={12} m={4}>
           <Card className='small'
           header={<CardTitle image='img/sample-1.jpg'>Card Title</CardTitle>}
-          actions={[<a href='#'>This is a Link</a>]}>
+          actions={[<a href='#' className="button hvr-grow">This is a Link</a>]}>
           I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.
         </Card>
           </Col>
           <Col s={12} m={4}>
           <Card className='small'
           header={<CardTitle image='img/sample-1.jpg'>Card Title</CardTitle>}
-          actions={[<a href='#'>This is a Link</a>]}>
+          actions={[<a href='#' className="button hvr-grow">This is a Link</a>]}>
           I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.
         </Card>
           </Col>
           <Col s={12} m={4}>
           <Card className='small'
           header={<CardTitle image='img/sample-1.jpg'>Card Title</CardTitle>}
-          actions={[<a href='#'>This is a Link</a>]}>
+          actions={[<a href='#' className="button hvr-grow">This is a Link</a>]}>
           I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.
         </Card>
           </Col>
       </Row>
-      <Home tweets={this.state.tweets}
-        handleSearch={this.handleSearch}
-        updateSearchValue={this.updateSearchValue}
-        search={this.state.search} />
       </div>
     );
   }

@@ -1,16 +1,17 @@
 import React from 'react';
 import './Home.css';
 
+import {Row, Input} from 'react-materialize';
+
+
 const Home = ({tweets, handleSearch, updateSearchValue}) => {
     return (
         <div>
-            <h1> {tweets} </h1>
-            <p> hi </p>
-            <div>
             <form onSubmit={(e) => handleSearch(e)}>
-                <input type="search" placeholder="Username" onChange={updateSearchValue} />
+                <input type="search" placeholder="Enter username here..." onChange={updateSearchValue} />
             </form>
-            </div>
+           
+            <h1> {tweets} </h1>
         </div>
     )
 }

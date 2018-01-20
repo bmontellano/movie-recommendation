@@ -19,35 +19,38 @@ app.use(bodyParser.json());
 
 
 app.use('/tweets', require('./routes/routes'));
+app.use('/movies', require('./routes/routes'));
 
 
 // ===============
 
-var client = new Twitter({
-  consumer_key: process.env.CONSUMER_KEY,
-  consumer_secret: process.env.CONSUMER_SECRET,
-  access_token_key: process.env.ACCESS_TOKEN_KEY,
-  access_token_secret: process.env.ACCESS_TOKEN_SECRET
-});
-var params = {screen_name: 'valeriaoshiro'};
 
-var cursor = -1;
-var api_path = 'friends/list.json?screen_name=twitterapi&skip_status=true&include_user_entities=false&count=200';
-var celebrities = [];
+// var client = new Twitter({
+//   consumer_key: process.env.CONSUMER_KEY,
+//   consumer_secret: process.env.CONSUMER_SECRET,
+//   access_token_key: process.env.ACCESS_TOKEN_KEY,
+//   access_token_secret: process.env.ACCESS_TOKEN_SECRET
+// });
+// var params = {screen_name: 'valeriaoshiro'};
 
-client.get('friends/list.json?cursor=-1&screen_name=twitterapi&skip_status=true&include_user_entities=false&count=200', params, function(error, tweets, response) {
-  if (!error) {
-    //cursor = tweets.next_cursor;
-    //console.log("////////", tweets.next_cursor, tweets.users.length);
-    //console.log("*********users ", tweets.users);
-    tweets.users.forEach(function(user){
-        if(user.verified) celebrities.push(user.name);
-        console.log("*********", celebrities);
-    })
-  } else {
-    console.log(error);
-  }
-});
+// var cursor = -1;
+// var api_path = 'friends/list.json?screen_name=twitterapi&skip_status=true&include_user_entities=false&count=200';
+// var celebrities = [];
+
+// client.get('friends/list.json?cursor=-1&screen_name=twitterapi&skip_status=true&include_user_entities=false&count=200', params, function(error, tweets, response) {
+//   if (!error) {
+//     //cursor = tweets.next_cursor;
+//     //console.log("////////", tweets.next_cursor, tweets.users.length);
+//     //console.log("*********users ", tweets.users);
+//     tweets.users.forEach(function(user){
+//         if(user.verified) celebrities.push(user.name);
+//         console.log("*********", celebrities);
+//     })
+//   } else {
+//     console.log(error);
+//   }
+// });
+
 //console.log(celebrities);
 
 // client.get('friends/list.json?cursor=' + cursor + '&screen_name=twitterapi&skip_status=true&include_user_entities=false&count=200', params, function(error2, tweets2, response2) {
