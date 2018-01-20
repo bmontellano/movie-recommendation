@@ -6,12 +6,11 @@ import './App.css';
 
 import {Navbar, NavItem, Col, Card, Row, CardPanel, CardTitle} from 'react-materialize';
 
-
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tweets: null,
+      tweets: [],
       search: ""
     }
   }
@@ -25,10 +24,8 @@ class App extends Component {
     fetch('/tweets', {
       method: 'GET'
     })
-    
-    .then(res => console.log(res))
-    // .then(res => JSON.stringify(res))
-    // .then(data => this.setState({tweets: data}))
+    .then(res => res.json())
+    .then(data => this.setState({tweets: data.users[0].name}))
   }
 
   handleSearch = (e) => {
@@ -36,12 +33,12 @@ class App extends Component {
     console.log(e.target.value);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.handleTweets();
   }
 
   render() {
-    console.log(this.state.tweets);
+    console.log('TWEETS', this.state.tweets);
     console.log('Search: ', this.state.search)
     return (
       <div className="App">
@@ -59,25 +56,25 @@ class App extends Component {
 
       <Row>
           <Col s={12} m={4}>
-          <Card className='small'
-          header={<CardTitle image='img/sample-1.jpg'>Card Title</CardTitle>}
-          actions={[<a href='#' className="button hvr-grow">This is a Link</a>]}>
-          I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.
-        </Card>
+            <Card className='small'
+              header={<CardTitle image='img/sample-1.jpg'>Card Title</CardTitle>}
+              actions={[<a href='#' className="button hvr-grow">This is a Link</a>]}>
+              I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.
+            </Card>
           </Col>
           <Col s={12} m={4}>
-          <Card className='small'
-          header={<CardTitle image='img/sample-1.jpg'>Card Title</CardTitle>}
-          actions={[<a href='#' className="button hvr-grow">This is a Link</a>]}>
-          I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.
-        </Card>
+            <Card className='small'
+              header={<CardTitle image='img/sample-1.jpg'>Card Title</CardTitle>}
+              actions={[<a href='#' className="button hvr-grow">This is a Link</a>]}>
+              I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.
+            </Card>
           </Col>
           <Col s={12} m={4}>
-          <Card className='small'
-          header={<CardTitle image='img/sample-1.jpg'>Card Title</CardTitle>}
-          actions={[<a href='#' className="button hvr-grow">This is a Link</a>]}>
-          I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.
-        </Card>
+            <Card className='small'
+              header={<CardTitle image='img/sample-1.jpg'>Card Title</CardTitle>}
+              actions={[<a href='#' className="button hvr-grow">This is a Link</a>]}>
+              I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.
+            </Card>
           </Col>
       </Row>
       </div>

@@ -14,6 +14,7 @@ function getTweets(req, res) {
     
     var cursor = -1;
     var api_path = 'friends/list.json?screen_name=twitterapi&skip_status=true&include_user_entities=false&count=200';
+    
     var celebrities = [];
     
     client.get('friends/list.json?cursor=-1&screen_name=twitterapi&skip_status=true&include_user_entities=false&count=200', params, function(error, tweets, response) {
@@ -21,14 +22,19 @@ function getTweets(req, res) {
         //cursor = tweets.next_cursor;
         //console.log("////////", tweets.next_cursor, tweets.users.length);
         //console.log("*********users ", tweets.users);
-        tweets.users.forEach(function(user){
-            if(user.verified) celebrities.push(user.name);
-            console.log("*********", celebrities);
-        })
+        // tweets.users.forEach(function(user){
+        //     if(user.verified) celebrities.push(user.name);
+        //     console.log("*********", celebrities);
+        // })
+        // console.log('TWEETS', tweets);
+        // return tweets;
+        console.log('REQUEST', req)
+        return res.send(tweets);
     } else {
         console.log(error);
     }
     });
+
 }
 
 function getMovies(req, res) {
