@@ -24,8 +24,11 @@ class App extends Component {
     // if (e) e.preventDefault();
     fetch('/tweets', {
       method: 'GET'
-    }).then(res => JSON.stringify(res))
-    .then(data => this.setState({tweets: data}))
+    })
+    
+    .then(res => console.log(res))
+    // .then(res => JSON.stringify(res))
+    // .then(data => this.setState({tweets: data}))
   }
 
   handleSearch = (e) => {
@@ -34,7 +37,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // this.handleTweets();
+    this.handleTweets();
   }
 
   render() {
