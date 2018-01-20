@@ -18,6 +18,9 @@ app.use(express.static(path.join(__dirname, 'build')));
 app.use(bodyParser.json());
 
 
+app.use('/tweets', require('./routes/routes'));
+
+
 // ===============
 
 var client = new Twitter({
@@ -27,13 +30,13 @@ var client = new Twitter({
   access_token_secret: process.env.ACCESS_TOKEN_SECRET
 });
 var params = {screen_name: 'valeriaoshiro'};
-client.get('statuses/user_timeline', params, function(error, tweets, response) {
-  if (!error) {
-    console.log(tweets);
-  } else {
-    console.log(error);
-  }
-});
+// client.get('statuses/user_timeline', params, function(error, tweets, response) {
+//   if (!error) {
+//     console.log(tweets);
+//   } else {
+//     console.log(error);
+//   }
+// });
 
 // =============
 
