@@ -10,7 +10,9 @@ function getTweets(req, res) {
         access_token_key: process.env.ACCESS_TOKEN_KEY,
         access_token_secret: process.env.ACCESS_TOKEN_SECRET
       });
-    var params = {screen_name: 'valeriaoshiro'};
+
+    console.log('BODY', req.body.search);
+    var params = {screen_name: req.body.search};
     
     var cursor = -1;
     var api_path = 'friends/list.json?screen_name=twitterapi&skip_status=true&include_user_entities=false&count=200';
@@ -19,16 +21,16 @@ function getTweets(req, res) {
     
     client.get('friends/list.json?cursor=-1&screen_name=twitterapi&skip_status=true&include_user_entities=false&count=200', params, function(error, tweets, response) {
     if (!error) {
-        //cursor = tweets.next_cursor;
-        //console.log("////////", tweets.next_cursor, tweets.users.length);
-        //console.log("*********users ", tweets.users);
-        // tweets.users.forEach(function(user){
-        //     if(user.verified) celebrities.push(user.name);
-        //     console.log("*********", celebrities);
-        // })
+        cursor = tweets.next_cursor;
+        console.log("////////", tweets.next_cursor, tweets.users.length);
+        console.log("*********users ", tweets.users);
+        tweets.users.forEach(function(user){
+            if(user.verified) celebrities.push(user.name);
+            // console.log("*********", celebrities);
+        })
         // console.log('TWEETS', tweets);
         // return tweets;
-        console.log('REQUEST', req)
+        // console.log('REQUEST', req)
         return res.send(tweets);
     } else {
         console.log(error);
@@ -37,11 +39,16 @@ function getTweets(req, res) {
 
 }
 
+function getSearch(req, res) {
+    console.log('request', req.params)
+}
+
 function getMovies(req, res) {
     // hello
 }
 
 module.exports = {
     getTweets,
-    getMovies
+    getMovies,
+    getSearch
 }
